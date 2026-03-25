@@ -1,0 +1,44 @@
+Strategy Design Pattern (Behavioral Pattern)
+
+What it is:
+- Strategy pattern defines a family of algorithms (strategies), encapsulates each one in a separate class,
+  and makes them interchangeable.
+- The client can choose which algorithm to use at runtime without changing the code that uses it.
+- It helps avoid large if-else/switch blocks scattered throughout business logic and supports the Open/Closed Principle
+  (you can add new strategies with minimal changes).
+
+Key participants:
+1) Strategy (interface)
+   - Declares a common operation that all algorithms must implement.
+
+2) ConcreteStrategy (classes)
+   - Different implementations of the Strategy interface (different algorithms/behaviors).
+
+3) Context (class)
+   - Holds a reference to a Strategy object and delegates the work to it.
+   - The Context does not know the internal details of the strategy; it just calls the interface method.
+
+4) Client (caller code)
+   - Decides which ConcreteStrategy to use and provides it to the Context.
+
+How this project maps to Strategy:
+- Strategy interface: NavigationStrategy
+  - Method: navigate(Point a, Point b)
+
+- Concrete strategies:
+  - CabNavigationStrategy
+  - CarNavigationStrategy
+  - BikeNavigationStrategy
+  Each one implements navigate(...) differently (here, just prints a different message).
+
+- Context: NavigationContext
+  - Stores the chosen NavigationStrategy in the field 'strategy'
+  - executeNavigation(...) delegates to strategy.navigate(...)
+
+- Client: Main
+  - Reads user input (1/2/3) and sets the corresponding strategy in the context at runtime
+  - Calls context.executeNavigation(start, end)
+
+Outcome:
+- You can add a new navigation type (e.g., WalkNavigationStrategy) by creating a new class implementing
+  NavigationStrategy, with minimal or no changes to existing strategy classes and the context.
