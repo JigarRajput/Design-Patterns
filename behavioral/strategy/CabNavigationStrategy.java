@@ -1,5 +1,6 @@
 package behavioral.strategy;
 
+// Concrete strategy: navigation using a cab
 public class CabNavigationStrategy implements NavigationStrategy {
 
     @Override
