@@ -5,8 +5,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Context holds a reference to a Strategy and delegates work to it
         NavigationContext context = new NavigationContext();
 
+        // Read user choice to decide which strategy to use at runtime
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter Navigation Choice:");
@@ -14,6 +16,7 @@ public class Main {
 
         int navigationChoice = scanner.nextInt();
 
+        // Choose the algorithm (strategy) based on runtime input
         if(navigationChoice == 1) {
             context.setNavigationStrategy(new CabNavigationStrategy());
         }
@@ -25,10 +28,13 @@ public class Main {
         }
         else {
             System.out.println("Invalid choice");
+            scanner.close();
+            return;
         }
 
         scanner.close();
 
+        // Execute navigation using whichever strategy was selected
         context.executeNavigation(new Point(0,0), new Point(1,1));
     }
 }
