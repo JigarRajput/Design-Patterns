@@ -1,5 +1,6 @@
 package behavioral.strategy;
 
+// Concrete strategy: navigation using a bike
 public class BikeNavigationStrategy implements NavigationStrategy{
 
     @Override
