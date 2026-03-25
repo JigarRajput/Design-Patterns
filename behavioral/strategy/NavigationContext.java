@@ -17,4 +17,14 @@ public class NavigationContext {
     public void executeNavigation(Point a, Point b) {
         strategy.navigate(a, b);
     }
+
+    // Why Context is useful (typical real-world reasons)
+    // Centralizes how the algorithm is used
+    // If navigation requires common steps (validation, logging, metrics, timing, caching, error handling), context is the single place to keep that:
+        // public void executeNavigation(Point a, Point b) {
+        //     validate(a, b);
+        //     strategy.navigate(a, b);
+        //     audit(a, b);
+        // }
+    // or every caller would need to do these extra things wherever navigation strategy is used
 }
